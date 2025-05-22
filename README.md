@@ -1,1 +1,1 @@
-# memeclub-ponder
+# gpm-ponder
