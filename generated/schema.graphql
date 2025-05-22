@@ -1,0 +1,525 @@
+type Query {
+  token(id: String!): Token
+  tokens(where: TokenFilter, orderBy: String, orderDirection: String, before: String, after: String, limit: Int): TokenPage!
+  trade(id: String!): Trade
+  trades(where: TradeFilter, orderBy: String, orderDirection: String, before: String, after: String, limit: Int): TradePage!
+  holder(id: String!): Holder
+  holders(where: HolderFilter, orderBy: String, orderDirection: String, before: String, after: String, limit: Int): HolderPage!
+  candle(id: String!): Candle
+  candles(where: CandleFilter, orderBy: String, orderDirection: String, before: String, after: String, limit: Int): CandlePage!
+  dexCandle(id: String!): DexCandle
+  dexCandles(where: DexCandleFilter, orderBy: String, orderDirection: String, before: String, after: String, limit: Int): DexCandlePage!
+  _meta: _meta
+}
+
+type Token {
+  id: String!
+  chainId: BigInt!
+  address: String!
+  name: String!
+  symbol: String!
+  creator: String!
+  raiseToken: String!
+  startTime: BigInt!
+  maxCap: BigInt!
+  price: BigInt!
+  lastTradeAt: BigInt!
+  featured: Boolean!
+  dexPair: String
+}
+
+scalar BigInt
+
+type TokenPage {
+  items: [Token!]!
+  pageInfo: PageInfo!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+input TokenFilter {
+  AND: [TokenFilter]
+  OR: [TokenFilter]
+  id: String
+  id_not: String
+  id_in: [String]
+  id_not_in: [String]
+  id_contains: String
+  id_not_contains: String
+  id_starts_with: String
+  id_ends_with: String
+  id_not_starts_with: String
+  id_not_ends_with: String
+  chainId: BigInt
+  chainId_not: BigInt
+  chainId_in: [BigInt]
+  chainId_not_in: [BigInt]
+  chainId_gt: BigInt
+  chainId_lt: BigInt
+  chainId_gte: BigInt
+  chainId_lte: BigInt
+  address: String
+  address_not: String
+  address_in: [String]
+  address_not_in: [String]
+  address_gt: String
+  address_lt: String
+  address_gte: String
+  address_lte: String
+  name: String
+  name_not: String
+  name_in: [String]
+  name_not_in: [String]
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_ends_with: String
+  name_not_starts_with: String
+  name_not_ends_with: String
+  symbol: String
+  symbol_not: String
+  symbol_in: [String]
+  symbol_not_in: [String]
+  symbol_contains: String
+  symbol_not_contains: String
+  symbol_starts_with: String
+  symbol_ends_with: String
+  symbol_not_starts_with: String
+  symbol_not_ends_with: String
+  creator: String
+  creator_not: String
+  creator_in: [String]
+  creator_not_in: [String]
+  creator_gt: String
+  creator_lt: String
+  creator_gte: String
+  creator_lte: String
+  raiseToken: String
+  raiseToken_not: String
+  raiseToken_in: [String]
+  raiseToken_not_in: [String]
+  raiseToken_gt: String
+  raiseToken_lt: String
+  raiseToken_gte: String
+  raiseToken_lte: String
+  startTime: BigInt
+  startTime_not: BigInt
+  startTime_in: [BigInt]
+  startTime_not_in: [BigInt]
+  startTime_gt: BigInt
+  startTime_lt: BigInt
+  startTime_gte: BigInt
+  startTime_lte: BigInt
+  maxCap: BigInt
+  maxCap_not: BigInt
+  maxCap_in: [BigInt]
+  maxCap_not_in: [BigInt]
+  maxCap_gt: BigInt
+  maxCap_lt: BigInt
+  maxCap_gte: BigInt
+  maxCap_lte: BigInt
+  price: BigInt
+  price_not: BigInt
+  price_in: [BigInt]
+  price_not_in: [BigInt]
+  price_gt: BigInt
+  price_lt: BigInt
+  price_gte: BigInt
+  price_lte: BigInt
+  lastTradeAt: BigInt
+  lastTradeAt_not: BigInt
+  lastTradeAt_in: [BigInt]
+  lastTradeAt_not_in: [BigInt]
+  lastTradeAt_gt: BigInt
+  lastTradeAt_lt: BigInt
+  lastTradeAt_gte: BigInt
+  lastTradeAt_lte: BigInt
+  featured: Boolean
+  featured_not: Boolean
+  featured_in: [Boolean]
+  featured_not_in: [Boolean]
+  dexPair: String
+  dexPair_not: String
+  dexPair_in: [String]
+  dexPair_not_in: [String]
+  dexPair_gt: String
+  dexPair_lt: String
+  dexPair_gte: String
+  dexPair_lte: String
+}
+
+type Trade {
+  id: String!
+  chainId: BigInt!
+  transactionHash: String!
+  token: String!
+  account: String!
+  tokenAmount: BigInt!
+  raiseAmount: BigInt!
+  tokenPrice: BigInt!
+  isBuy: Boolean!
+  tradeAt: BigInt!
+}
+
+type TradePage {
+  items: [Trade!]!
+  pageInfo: PageInfo!
+}
+
+input TradeFilter {
+  AND: [TradeFilter]
+  OR: [TradeFilter]
+  id: String
+  id_not: String
+  id_in: [String]
+  id_not_in: [String]
+  id_contains: String
+  id_not_contains: String
+  id_starts_with: String
+  id_ends_with: String
+  id_not_starts_with: String
+  id_not_ends_with: String
+  chainId: BigInt
+  chainId_not: BigInt
+  chainId_in: [BigInt]
+  chainId_not_in: [BigInt]
+  chainId_gt: BigInt
+  chainId_lt: BigInt
+  chainId_gte: BigInt
+  chainId_lte: BigInt
+  transactionHash: String
+  transactionHash_not: String
+  transactionHash_in: [String]
+  transactionHash_not_in: [String]
+  transactionHash_gt: String
+  transactionHash_lt: String
+  transactionHash_gte: String
+  transactionHash_lte: String
+  token: String
+  token_not: String
+  token_in: [String]
+  token_not_in: [String]
+  token_gt: String
+  token_lt: String
+  token_gte: String
+  token_lte: String
+  account: String
+  account_not: String
+  account_in: [String]
+  account_not_in: [String]
+  account_gt: String
+  account_lt: String
+  account_gte: String
+  account_lte: String
+  tokenAmount: BigInt
+  tokenAmount_not: BigInt
+  tokenAmount_in: [BigInt]
+  tokenAmount_not_in: [BigInt]
+  tokenAmount_gt: BigInt
+  tokenAmount_lt: BigInt
+  tokenAmount_gte: BigInt
+  tokenAmount_lte: BigInt
+  raiseAmount: BigInt
+  raiseAmount_not: BigInt
+  raiseAmount_in: [BigInt]
+  raiseAmount_not_in: [BigInt]
+  raiseAmount_gt: BigInt
+  raiseAmount_lt: BigInt
+  raiseAmount_gte: BigInt
+  raiseAmount_lte: BigInt
+  tokenPrice: BigInt
+  tokenPrice_not: BigInt
+  tokenPrice_in: [BigInt]
+  tokenPrice_not_in: [BigInt]
+  tokenPrice_gt: BigInt
+  tokenPrice_lt: BigInt
+  tokenPrice_gte: BigInt
+  tokenPrice_lte: BigInt
+  isBuy: Boolean
+  isBuy_not: Boolean
+  isBuy_in: [Boolean]
+  isBuy_not_in: [Boolean]
+  tradeAt: BigInt
+  tradeAt_not: BigInt
+  tradeAt_in: [BigInt]
+  tradeAt_not_in: [BigInt]
+  tradeAt_gt: BigInt
+  tradeAt_lt: BigInt
+  tradeAt_gte: BigInt
+  tradeAt_lte: BigInt
+}
+
+type Holder {
+  id: String!
+  chainId: BigInt!
+  token: String!
+  account: String!
+  amount: BigInt!
+}
+
+type HolderPage {
+  items: [Holder!]!
+  pageInfo: PageInfo!
+}
+
+input HolderFilter {
+  AND: [HolderFilter]
+  OR: [HolderFilter]
+  id: String
+  id_not: String
+  id_in: [String]
+  id_not_in: [String]
+  id_contains: String
+  id_not_contains: String
+  id_starts_with: String
+  id_ends_with: String
+  id_not_starts_with: String
+  id_not_ends_with: String
+  chainId: BigInt
+  chainId_not: BigInt
+  chainId_in: [BigInt]
+  chainId_not_in: [BigInt]
+  chainId_gt: BigInt
+  chainId_lt: BigInt
+  chainId_gte: BigInt
+  chainId_lte: BigInt
+  token: String
+  token_not: String
+  token_in: [String]
+  token_not_in: [String]
+  token_gt: String
+  token_lt: String
+  token_gte: String
+  token_lte: String
+  account: String
+  account_not: String
+  account_in: [String]
+  account_not_in: [String]
+  account_gt: String
+  account_lt: String
+  account_gte: String
+  account_lte: String
+  amount: BigInt
+  amount_not: BigInt
+  amount_in: [BigInt]
+  amount_not_in: [BigInt]
+  amount_gt: BigInt
+  amount_lt: BigInt
+  amount_gte: BigInt
+  amount_lte: BigInt
+}
+
+type Candle {
+  id: String!
+  chainId: BigInt!
+  token: String!
+  open: BigInt!
+  close: BigInt!
+  high: BigInt!
+  low: BigInt!
+  volume: BigInt!
+  timestamp: BigInt!
+}
+
+type CandlePage {
+  items: [Candle!]!
+  pageInfo: PageInfo!
+}
+
+input CandleFilter {
+  AND: [CandleFilter]
+  OR: [CandleFilter]
+  id: String
+  id_not: String
+  id_in: [String]
+  id_not_in: [String]
+  id_contains: String
+  id_not_contains: String
+  id_starts_with: String
+  id_ends_with: String
+  id_not_starts_with: String
+  id_not_ends_with: String
+  chainId: BigInt
+  chainId_not: BigInt
+  chainId_in: [BigInt]
+  chainId_not_in: [BigInt]
+  chainId_gt: BigInt
+  chainId_lt: BigInt
+  chainId_gte: BigInt
+  chainId_lte: BigInt
+  token: String
+  token_not: String
+  token_in: [String]
+  token_not_in: [String]
+  token_gt: String
+  token_lt: String
+  token_gte: String
+  token_lte: String
+  open: BigInt
+  open_not: BigInt
+  open_in: [BigInt]
+  open_not_in: [BigInt]
+  open_gt: BigInt
+  open_lt: BigInt
+  open_gte: BigInt
+  open_lte: BigInt
+  close: BigInt
+  close_not: BigInt
+  close_in: [BigInt]
+  close_not_in: [BigInt]
+  close_gt: BigInt
+  close_lt: BigInt
+  close_gte: BigInt
+  close_lte: BigInt
+  high: BigInt
+  high_not: BigInt
+  high_in: [BigInt]
+  high_not_in: [BigInt]
+  high_gt: BigInt
+  high_lt: BigInt
+  high_gte: BigInt
+  high_lte: BigInt
+  low: BigInt
+  low_not: BigInt
+  low_in: [BigInt]
+  low_not_in: [BigInt]
+  low_gt: BigInt
+  low_lt: BigInt
+  low_gte: BigInt
+  low_lte: BigInt
+  volume: BigInt
+  volume_not: BigInt
+  volume_in: [BigInt]
+  volume_not_in: [BigInt]
+  volume_gt: BigInt
+  volume_lt: BigInt
+  volume_gte: BigInt
+  volume_lte: BigInt
+  timestamp: BigInt
+  timestamp_not: BigInt
+  timestamp_in: [BigInt]
+  timestamp_not_in: [BigInt]
+  timestamp_gt: BigInt
+  timestamp_lt: BigInt
+  timestamp_gte: BigInt
+  timestamp_lte: BigInt
+}
+
+type DexCandle {
+  id: String!
+  chainId: BigInt!
+  token: String!
+  dexPair: String!
+  open: BigInt!
+  close: BigInt!
+  high: BigInt!
+  low: BigInt!
+  volume: BigInt!
+  timestamp: BigInt!
+}
+
+type DexCandlePage {
+  items: [DexCandle!]!
+  pageInfo: PageInfo!
+}
+
+input DexCandleFilter {
+  AND: [DexCandleFilter]
+  OR: [DexCandleFilter]
+  id: String
+  id_not: String
+  id_in: [String]
+  id_not_in: [String]
+  id_contains: String
+  id_not_contains: String
+  id_starts_with: String
+  id_ends_with: String
+  id_not_starts_with: String
+  id_not_ends_with: String
+  chainId: BigInt
+  chainId_not: BigInt
+  chainId_in: [BigInt]
+  chainId_not_in: [BigInt]
+  chainId_gt: BigInt
+  chainId_lt: BigInt
+  chainId_gte: BigInt
+  chainId_lte: BigInt
+  token: String
+  token_not: String
+  token_in: [String]
+  token_not_in: [String]
+  token_gt: String
+  token_lt: String
+  token_gte: String
+  token_lte: String
+  dexPair: String
+  dexPair_not: String
+  dexPair_in: [String]
+  dexPair_not_in: [String]
+  dexPair_gt: String
+  dexPair_lt: String
+  dexPair_gte: String
+  dexPair_lte: String
+  open: BigInt
+  open_not: BigInt
+  open_in: [BigInt]
+  open_not_in: [BigInt]
+  open_gt: BigInt
+  open_lt: BigInt
+  open_gte: BigInt
+  open_lte: BigInt
+  close: BigInt
+  close_not: BigInt
+  close_in: [BigInt]
+  close_not_in: [BigInt]
+  close_gt: BigInt
+  close_lt: BigInt
+  close_gte: BigInt
+  close_lte: BigInt
+  high: BigInt
+  high_not: BigInt
+  high_in: [BigInt]
+  high_not_in: [BigInt]
+  high_gt: BigInt
+  high_lt: BigInt
+  high_gte: BigInt
+  high_lte: BigInt
+  low: BigInt
+  low_not: BigInt
+  low_in: [BigInt]
+  low_not_in: [BigInt]
+  low_gt: BigInt
+  low_lt: BigInt
+  low_gte: BigInt
+  low_lte: BigInt
+  volume: BigInt
+  volume_not: BigInt
+  volume_in: [BigInt]
+  volume_not_in: [BigInt]
+  volume_gt: BigInt
+  volume_lt: BigInt
+  volume_gte: BigInt
+  volume_lte: BigInt
+  timestamp: BigInt
+  timestamp_not: BigInt
+  timestamp_in: [BigInt]
+  timestamp_not_in: [BigInt]
+  timestamp_gt: BigInt
+  timestamp_lt: BigInt
+  timestamp_gte: BigInt
+  timestamp_lte: BigInt
+}
+
+type _meta {
+  status: JSON
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
